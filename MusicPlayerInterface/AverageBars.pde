@@ -7,7 +7,6 @@ import ddf.minim.ugens.*;
 
 class BandBars {
   private FFT fft;
-  private AudioPlayer ap;
   private PApplet instance;
 
   private float[] bars, lerpedBars;
@@ -15,10 +14,9 @@ class BandBars {
   private float barWidth;
   private float barGap = 4;
 
-  public BandBars(PApplet instance, FFT fft, AudioPlayer ap) {
+  public BandBars(PApplet instance, FFT fft) {
     this.instance = instance;
     this.fft = fft;
-    this.ap = ap;
   }
 
   public void setupSketch() {
@@ -30,7 +28,7 @@ class BandBars {
   public void drawSketch() {
     instance.pushStyle();
     for (int k = 0; k < bars.length; k++) {
-
+ 
       float amp = this.fft.getAvg(k) * ( instance.height / 35f);
       float lerpSpeed = 0.03f;
 

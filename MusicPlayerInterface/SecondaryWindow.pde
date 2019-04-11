@@ -56,7 +56,7 @@ class SecondaryWindow extends PApplet {
   }
 
   public void setupObjects() {
-    bars = new BandBars(this, fft, ap);
+    bars = new BandBars(this, fft);
     bars.setupSketch();
     
     projectiles = new Projectiles(this);
@@ -117,10 +117,6 @@ class SecondaryWindow extends PApplet {
       if(mode[4])
         projectiles.drawSketch();
     }
-    
-    if(keys[LEFT] && mode[4]) {
-      //projectiles.spawnProjectile();
-    }
 
     if (keys[java.awt.event.KeyEvent.VK_ALT] && keys[java.awt.event.KeyEvent.VK_ENTER] && canResize) {
       canResize = false;
@@ -152,9 +148,11 @@ class SecondaryWindow extends PApplet {
     }
     
     if(timer >= timeLimit && mode[4] && ap.isPlaying()) {
-      timeLimit = random(2, 50);
+      timeLimit = random(2, 60);
       timer = 0;
-      projectiles.spawnProjectile();
+      for(int i = 0; i < 1; i++) {
+        projectiles.spawnProjectile();
+      }
     }
     
     if(mode[4]) {

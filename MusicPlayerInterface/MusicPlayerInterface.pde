@@ -61,6 +61,10 @@ void settings() {
   end = false;
   m = new Minim(this);
   ap = m.loadFile(fileName);
+  if(ap == null) {
+    javax.swing.JOptionPane.showMessageDialog(null, "Invalid file path.");
+    System.exit(-1);
+  }
   ap.play();
 
   setVolume(ap, 50);
